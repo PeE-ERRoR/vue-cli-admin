@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Signin from '../views/Signin.vue'
+import Admin from '../views/Admin.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +11,32 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/admin',
+    component: Admin,
+    children: [
+      {
+        path: '/dasbord',
+        name: 'dasbord',
+        component: Home
+      },
+      {
+        path: '/signout',
+        name: 'signout',
+        component: Home
+      }
+    ]
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: Home
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: Signin
   },
   {
     path: '/about',
@@ -21,6 +49,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
