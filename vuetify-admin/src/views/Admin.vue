@@ -62,6 +62,7 @@
             v-else
             :key="item.text"
             @click="a"
+            :to="item.link"
           >
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -87,7 +88,7 @@
         class="ml-0 pl-4"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-        <span class="hidden-sm-and-down">Google Contacts</span>
+        <span class="hidden-sm-and-down">Admin</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -98,11 +99,15 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
+
       <v-btn icon>
         <v-icon>mdi-apps</v-icon>
       </v-btn>
       <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
+        <v-badge>
+          <template v-slot:badge>0</template>
+          <v-icon>mdi-bell</v-icon>
+        </v-badge>
       </v-btn>
       <v-btn
         icon
@@ -120,11 +125,12 @@
       </v-btn>
     </v-app-bar>
     <v-content>
-      <v-container
-        class="fill-height"
-        fluid
-      >
-        <router-view></router-view>
+      <v-container>
+        <router-view>
+          <header>
+          We want header content here
+        </header>
+        </router-view>
       </v-container>
     </v-content>
     <v-btn
@@ -229,9 +235,12 @@ export default {
     dialog: false,
     drawer: null,
     items: [
-      { icon: 'contacts', text: 'Contacts' },
-      { icon: 'history', text: 'Frequently contacted' },
+      { icon: 'home', text: 'Home', link: '/' },
+      { icon: 'contacts', text: 'Dasbord', link: 'dasbord' },
+      { icon: 'help', text: 'Stock', link: 'stock' },
+      { icon: 'history', text: 'Item', link: 'item' },
       { icon: 'content_copy', text: 'Duplicates' },
+      { icon: 'image', text: 'Images', link: 'images' },
       {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
@@ -260,6 +269,11 @@ export default {
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Go to the old version' }
     ]
-  })
+  }),
+  methods: {
+    a () {
+      console.log(55)
+    }
+  }
 }
 </script>

@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Signin from '../views/Signin.vue'
-import Admin from '../views/Admin.vue'
+import Home from '../views/Home'
+import Signin from '../views/Signin'
+import Admin from '../views/Admin'
+import Dasbord from '../views/Dasbord'
+import Stock from '../views/Stock'
+import Item from '../views/Item'
+import Images from '../views/Images'
+import Product from '../views/products/Product'
+import Promotion from '../views/promotion/Promotion'
 
 Vue.use(VueRouter)
 
@@ -10,7 +16,19 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/',
+        name: 'promotion',
+        component: Promotion
+      },
+      {
+        path: '/products',
+        name: 'products',
+        component: Product
+      }
+    ]
   },
   {
     path: '/admin',
@@ -19,12 +37,27 @@ const routes = [
       {
         path: '/dasbord',
         name: 'dasbord',
-        component: Home
+        component: Dasbord
       },
       {
         path: '/signout',
         name: 'signout',
         component: Home
+      },
+      {
+        path: '/stock',
+        name: 'stock',
+        component: Stock
+      },
+      {
+        path: '/item',
+        name: 'item',
+        component: Item
+      },
+      {
+        path: '/images',
+        name: 'images',
+        component: Images
       }
     ]
   },
