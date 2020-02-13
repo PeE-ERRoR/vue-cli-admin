@@ -140,3 +140,11 @@ export default {
   })
 }
 </script>
+
+<style lang="sass">
+  $color: red
+  h2
+    color: $color
+  h1
+    color: #ccc
+</style>
